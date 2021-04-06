@@ -1,0 +1,10 @@
+{
+  "type" : "minecraft:smelting",
+  "ingredient" : {
+    "item" : "cupcakes:cupcake_dough"
+  },
+  "result" : {
+    "item" : "cupcakes:cupcake",
+    "count" : 3
+  }
+}
