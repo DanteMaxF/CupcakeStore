@@ -1,7 +1,10 @@
 package com.maxpower.cupcakes.setup;
 
 import com.maxpower.cupcakes.CupcakesMod;
+import com.maxpower.cupcakes.container.ModContainers;
+import com.maxpower.cupcakes.screen.MixerScreen;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.world.World;
@@ -13,7 +16,7 @@ public class ClientProxy implements IProxy{
     @Override
     public void init() {
 
-        // RenderTypeLookup.setRenderLayer(ModBlocks.ZUCCINI_CROP.get(), RenderType.getCutout());
+        ScreenManager.registerFactory(ModContainers.MIXER_CONTAINER.get(), MixerScreen::new);
     }
 
     @Override
