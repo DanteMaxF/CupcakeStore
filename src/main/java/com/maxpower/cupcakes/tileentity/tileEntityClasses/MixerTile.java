@@ -1,6 +1,7 @@
 package com.maxpower.cupcakes.tileentity.tileEntityClasses;
 
 import com.maxpower.cupcakes.item.ModItems;
+import com.maxpower.cupcakes.screen.MixerScreen;
 import com.maxpower.cupcakes.tileentity.ModTileEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
@@ -10,6 +11,8 @@ import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -27,6 +30,7 @@ public class MixerTile extends TileEntity implements ITickableTileEntity {
     }
 
     private int tick = 0;
+    private int progress = 0;
     private Status mixerStatus = Status.WAITING;
 
     private final ItemStackHandler itemHandler = createHandler();
@@ -67,13 +71,15 @@ public class MixerTile extends TileEntity implements ITickableTileEntity {
                 tick++;
             }
 
-            if (tick > 50) {
+            if (tick > 230) {
                 itemHandler.insertItem(3, new ItemStack(ModItems.CUPCAKE_DOUGH.get(), 1), false);
                 tick = 0;
                 this.mixerStatus = Status.WAITING;
             }
+    }
 
-
+    public int getProgress() {
+        return this.tick / 10;
     }
 
     @Override
@@ -129,4 +135,6 @@ public class MixerTile extends TileEntity implements ITickableTileEntity {
 
         return super.getCapability(capability, side);
     }
+
+
 }

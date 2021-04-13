@@ -2,6 +2,7 @@ package com.maxpower.cupcakes.container.containerClasses;
 
 import com.maxpower.cupcakes.block.ModBlocks;
 import com.maxpower.cupcakes.container.ModContainers;
+import com.maxpower.cupcakes.tileentity.tileEntityClasses.MixerTile;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -12,6 +13,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
@@ -32,10 +35,10 @@ public class MixerContainer extends Container {
 
         if (tileEntity != null) {
             tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
-                addSlot(new SlotItemHandler(h, 0, 48, 15));
-                addSlot(new SlotItemHandler(h, 1, 48, 39));
-                addSlot(new SlotItemHandler(h, 2, 48, 63));
-                addSlot(new SlotItemHandler(h, 3, 113, 39));
+                addSlot(new SlotItemHandler(h, 0, 56, 17));
+                addSlot(new SlotItemHandler(h, 1, 56, 53));
+                addSlot(new SlotItemHandler(h, 2, 27, 34));
+                addSlot(new SlotItemHandler(h, 3, 112, 35));
             });
         }
 
@@ -118,5 +121,10 @@ public class MixerContainer extends Container {
 
         topRow += 58;
         addSlotRange(playerInventory, 0, leftCol, topRow, 9, 18);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public int getProgress() {
+        return ((MixerTile) this.tileEntity).getProgress();
     }
 }
