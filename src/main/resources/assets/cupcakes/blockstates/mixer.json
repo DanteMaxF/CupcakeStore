@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "cupcakes:block/mixer" },
+    "facing=south": { "model": "cupcakes:block/mixer", "y": 180 },
+    "facing=west": { "model": "cupcakes:block/mixer", "y": 270 },
+    "facing=east": { "model": "cupcakes:block/mixer", "y": 90 }
+  }
+}

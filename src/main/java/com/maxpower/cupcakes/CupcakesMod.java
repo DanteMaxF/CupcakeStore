@@ -1,9 +1,11 @@
 package com.maxpower.cupcakes;
 
+import com.maxpower.cupcakes.block.ModBlocks;
 import com.maxpower.cupcakes.item.ModItems;
 import com.maxpower.cupcakes.setup.ClientProxy;
 import com.maxpower.cupcakes.setup.IProxy;
 import com.maxpower.cupcakes.setup.ServerProxy;
+import com.maxpower.cupcakes.tileentity.ModTileEntities;
 import com.maxpower.cupcakes.util.Config;
 import com.maxpower.cupcakes.util.Registration;
 import net.minecraft.block.Block;
@@ -85,9 +87,9 @@ public class CupcakesMod
 
         // Register items, blocks, etc added by our mod
         ModItems.register();
-//        ModBlocks.register();
+        ModBlocks.register();
 //        ModFluids.register();
-//        ModTileEntities.register();
+        ModTileEntities.register();
 //
 //        // Register mod events
 //        MinecraftForge.EVENT_BUS.register(new ModEvents());
