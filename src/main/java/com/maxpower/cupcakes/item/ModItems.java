@@ -1,5 +1,6 @@
 package com.maxpower.cupcakes.item;
 
+import com.maxpower.cupcakes.item.itemClasses.Butter;
 import com.maxpower.cupcakes.item.itemClasses.Cupcake;
 import com.maxpower.cupcakes.item.itemClasses.CupcakeDough;
 import com.maxpower.cupcakes.util.Registration;
@@ -18,6 +19,12 @@ public class ModItems {
             Registration.ITEMS.register(
                     "cupcake_dough",
                     () -> new CupcakeDough()
+            );
+
+    public static final RegistryObject<Item> BUTTER =
+            Registration.ITEMS.register(
+                    "butter",
+                    () -> new Butter()
             );
 
     public static void register() {

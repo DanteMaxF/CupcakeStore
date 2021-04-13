@@ -37,5 +37,6 @@ public class MixerScreen extends ContainerScreen<MixerContainer> {
         int i = this.guiLeft;
         int j = this.guiTop;
         this.blit(matrixStack, i, j, 0, 0, this.xSize, this.ySize);
+        this.blit(matrixStack, i+74, j+38, 176, 0, 29, 21);
     }
 }

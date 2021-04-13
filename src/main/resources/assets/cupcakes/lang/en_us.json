@@ -1,6 +1,7 @@
 {
   "item.cupcakes.cupcake" : "Pastelillo",
   "item.cupcakes.cupcake_dough" : "Masa de pastelillo",
+  "item.cupcakes.butter" : "Mantequilla",
 
   "block.cupcakes.mixer" : "Mezcladora"
 }
