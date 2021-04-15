@@ -1,6 +1,8 @@
 package com.maxpower.cupcakes.block;
 
 import com.maxpower.cupcakes.CupcakesMod;
+import com.maxpower.cupcakes.block.blockClasses.ButterDispenser;
+import com.maxpower.cupcakes.block.blockClasses.CupcakeShop;
 import com.maxpower.cupcakes.block.blockClasses.Mixer;
 import com.maxpower.cupcakes.util.Registration;
 import net.minecraft.block.AbstractBlock;
@@ -22,6 +24,26 @@ public class ModBlocks {
                             AbstractBlock.Properties.create(Material.IRON)
                                 .hardnessAndResistance(4f)
                                 .harvestTool(ToolType.PICKAXE)
+                    )
+            );
+
+    public static final RegistryObject<Block> BUTTER_DISPENSER =
+            register(
+                    "butter_dispenser",
+                    () -> new ButterDispenser(
+                            AbstractBlock.Properties.create(Material.IRON)
+                                .hardnessAndResistance(4f)
+                                .harvestTool(ToolType.PICKAXE)
+                    )
+            );
+
+    public static final RegistryObject<Block> CUPCAKE_SHOP =
+            register(
+                    "cupcake_shop",
+                    () -> new CupcakeShop(
+                            AbstractBlock.Properties.create(Material.WOOD)
+                                .hardnessAndResistance(4f)
+                                .harvestTool(ToolType.AXE)
                     )
             );
 

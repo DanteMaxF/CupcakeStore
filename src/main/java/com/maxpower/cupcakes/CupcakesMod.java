@@ -2,6 +2,7 @@ package com.maxpower.cupcakes;
 
 import com.maxpower.cupcakes.block.ModBlocks;
 import com.maxpower.cupcakes.container.ModContainers;
+import com.maxpower.cupcakes.events.ModEvents;
 import com.maxpower.cupcakes.item.ModItems;
 import com.maxpower.cupcakes.setup.ClientProxy;
 import com.maxpower.cupcakes.setup.IProxy;
@@ -94,7 +95,7 @@ public class CupcakesMod
         ModContainers.register();
 //
 //        // Register mod events
-//        MinecraftForge.EVENT_BUS.register(new ModEvents());
+        MinecraftForge.EVENT_BUS.register(new ModEvents());
     }
 
 

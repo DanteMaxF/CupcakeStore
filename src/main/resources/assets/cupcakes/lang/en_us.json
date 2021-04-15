@@ -2,6 +2,9 @@
   "item.cupcakes.cupcake" : "Pastelillo",
   "item.cupcakes.cupcake_dough" : "Masa de pastelillo",
   "item.cupcakes.butter" : "Mantequilla",
+  "item.cupcakes.coin" : "Moneda",
 
-  "block.cupcakes.mixer" : "Mezcladora"
+  "block.cupcakes.mixer" : "Mezcladora",
+  "block.cupcakes.butter_dispenser" : "Dispensador de mantequilla",
+  "block.cupakes.cupcake_shop" : "Tienda de pastelillos"
 }

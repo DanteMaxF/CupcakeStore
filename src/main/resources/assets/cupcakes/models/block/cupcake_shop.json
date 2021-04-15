@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "cupcakes:block/cupcake_shop_front",
+    "north": "cupcakes:block/cupcake_shop_front",
+    "south": "cupcakes:block/cupcake_shop_side",
+    "east": "cupcakes:block/cupcake_shop_side",
+    "west": "cupcakes:block/cupcake_shop_front",
+    "up": "cupcakes:block/cupcake_shop_top",
+    "down": "cupcakes:block/oak_planks"
+  }
+}
