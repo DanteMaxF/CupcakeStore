@@ -2,6 +2,7 @@ package com.maxpower.cupcakes.setup;
 
 import com.maxpower.cupcakes.CupcakesMod;
 import com.maxpower.cupcakes.container.ModContainers;
+import com.maxpower.cupcakes.screen.CupcakeShopScreen;
 import com.maxpower.cupcakes.screen.MixerScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
@@ -17,6 +18,7 @@ public class ClientProxy implements IProxy{
     public void init() {
 
         ScreenManager.registerFactory(ModContainers.MIXER_CONTAINER.get(), MixerScreen::new);
+        ScreenManager.registerFactory(ModContainers.CUPCAKE_SHOP_CONTAINER.get(), CupcakeShopScreen::new);
     }
 
     @Override

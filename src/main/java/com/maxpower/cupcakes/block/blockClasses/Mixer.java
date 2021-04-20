@@ -353,7 +353,7 @@ public class Mixer extends Block {
                 INamedContainerProvider containerProvider = new INamedContainerProvider() {
                     @Override
                     public ITextComponent getDisplayName() {
-                        return new TranslationTextComponent("screen.cupcakes.mixer");
+                        return new TranslationTextComponent("Mezcladora");
                     }
 
                     @Override

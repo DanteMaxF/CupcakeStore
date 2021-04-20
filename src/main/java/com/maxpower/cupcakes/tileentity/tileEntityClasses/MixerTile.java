@@ -30,7 +30,6 @@ public class MixerTile extends TileEntity implements ITickableTileEntity {
     }
 
     private int tick = 0;
-    private int progress = 0;
     private Status mixerStatus = Status.WAITING;
 
     private final ItemStackHandler itemHandler = createHandler();
@@ -61,17 +60,29 @@ public class MixerTile extends TileEntity implements ITickableTileEntity {
                 this.mixerStatus == Status.WAITING
             ) {
                 this.mixerStatus = Status.PROCESSING;
-                itemHandler.extractItem(0, 1, false);
-                itemHandler.extractItem(1, 1, false);
-                itemHandler.extractItem(2, 1, false);
+
 
             }
 
             if (this.mixerStatus == Status.PROCESSING) {
-                tick++;
+                if (
+                    this.itemHandler.getStackInSlot(0).getItem() == ModItems.BUTTER.get() &&
+                    this.itemHandler.getStackInSlot(1).getItem() == Items.WHEAT &&
+                    this.itemHandler.getStackInSlot(2).getItem() == Items.SUGAR
+                ) {
+                    tick++;
+                } else {
+                    tick = 0;
+                    this.mixerStatus = Status.WAITING;
+                }
+
             }
 
             if (tick > 230) {
+                itemHandler.extractItem(0, 1, false);
+                itemHandler.extractItem(1, 1, false);
+                itemHandler.extractItem(2, 1, false);
+
                 itemHandler.insertItem(3, new ItemStack(ModItems.CUPCAKE_DOUGH.get(), 1), false);
                 tick = 0;
                 this.mixerStatus = Status.WAITING;

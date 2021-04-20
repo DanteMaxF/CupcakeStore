@@ -9,7 +9,6 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
@@ -21,14 +20,14 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-public class MixerContainer extends Container {
+public class CupcakeShopContainer extends Container {
 
     private TileEntity tileEntity;
     private PlayerEntity playerEntity;
     private IItemHandler playerInventory;
 
-    public MixerContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player) {
-        super(ModContainers.MIXER_CONTAINER.get(), windowId);
+    public CupcakeShopContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player){
+        super(ModContainers.CUPCAKE_SHOP_CONTAINER.get(), windowId);
 
         this.tileEntity = world.getTileEntity(pos);
         this.playerEntity = player;
@@ -36,14 +35,12 @@ public class MixerContainer extends Container {
 
         if (tileEntity != null) {
             tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
-                addSlot(new SlotItemHandler(h, 0, 56, 17));
-                addSlot(new SlotItemHandler(h, 1, 56, 53));
-                addSlot(new SlotItemHandler(h, 2, 27, 34));
-                addSlot(new SlotItemHandler(h, 3, 112, 35));
+                addSlot(new SlotItemHandler(h, 0, 38, 20));
+                addSlot(new SlotItemHandler(h, 1, 94, 20));
             });
         }
 
-        layoutPlayerInventorySlots(8, 84);
+        layoutPlayerInventorySlots(8,84);
     }
 
     @Override
@@ -54,7 +51,7 @@ public class MixerContainer extends Container {
                         tileEntity.getPos()
                 ),
                 playerEntity,
-                ModBlocks.MIXER.get()
+                ModBlocks.CUPCAKE_SHOP.get()
         );
     }
 
@@ -71,7 +68,7 @@ public class MixerContainer extends Container {
                 }
                 slot.onSlotChange(stack, itemStack);
             } else {
-                if (stack.getItem() == ModItems.BUTTER.get()) {
+                if (stack.getItem() == ModItems.CUPCAKE.get()) {
                     if (!this.mergeItemStack(stack, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }
@@ -128,4 +125,5 @@ public class MixerContainer extends Container {
     public int getProgress() {
         return ((MixerTile) this.tileEntity).getProgress();
     }
+
 }
