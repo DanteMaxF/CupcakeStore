@@ -27,8 +27,6 @@ public class Cupcake extends Item {
 
     @Override
     public void addInformation(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        tooltip.add(new StringTextComponent("Vende este pastelillo para ganar dinero.\nTambien se puede comer ;)"));
-
         super.addInformation(stack, world, tooltip, flag);
     }
 }

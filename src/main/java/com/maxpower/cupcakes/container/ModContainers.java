@@ -1,7 +1,7 @@
 package com.maxpower.cupcakes.container;
 
-import com.maxpower.cupcakes.container.containerClasses.CupcakeShopContainer;
 import com.maxpower.cupcakes.container.containerClasses.MixerContainer;
+import com.maxpower.cupcakes.container.containerClasses.ShopContainer;
 import com.maxpower.cupcakes.util.Registration;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.util.math.BlockPos;
@@ -20,13 +20,13 @@ public class ModContainers {
             }))
     );
 
-    public static final RegistryObject<ContainerType<CupcakeShopContainer>> CUPCAKE_SHOP_CONTAINER
+    public static final RegistryObject<ContainerType<ShopContainer>> SHOP_CONTAINER
             = Registration.CONTAINERS.register(
-            "cupcake_shop_container",
+                    "shop_container",
             () -> IForgeContainerType.create(((windowId, inv, data) -> {
                 BlockPos pos = data.readBlockPos();
                 World world = inv.player.getEntityWorld();
-                return new CupcakeShopContainer(windowId, world, pos, inv, inv.player);
+                return new ShopContainer(windowId, world, pos, inv, inv.player);
             }))
     );
 

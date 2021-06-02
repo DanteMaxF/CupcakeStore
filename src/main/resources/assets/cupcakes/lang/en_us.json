@@ -6,5 +6,6 @@
 
   "block.cupcakes.mixer" : "Mezcladora",
   "block.cupcakes.butter_dispenser" : "Dispensador de mantequilla",
-  "block.cupakes.cupcake_shop" : "Tienda de pastelillos"
+  "block.cupcakes.shop" : "Tienda de pastelillos",
+  "cupcake.sell" : "Elige un precio"
 }

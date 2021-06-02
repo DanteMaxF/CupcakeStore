@@ -29,7 +29,6 @@ public class MixerContainer extends Container {
 
     public MixerContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player) {
         super(ModContainers.MIXER_CONTAINER.get(), windowId);
-
         this.tileEntity = world.getTileEntity(pos);
         this.playerEntity = player;
         this.playerInventory = new InvWrapper(playerInventory);
@@ -128,4 +127,5 @@ public class MixerContainer extends Container {
     public int getProgress() {
         return ((MixerTile) this.tileEntity).getProgress();
     }
+
 }

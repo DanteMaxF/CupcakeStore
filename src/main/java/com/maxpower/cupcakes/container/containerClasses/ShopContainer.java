@@ -3,7 +3,7 @@ package com.maxpower.cupcakes.container.containerClasses;
 import com.maxpower.cupcakes.block.ModBlocks;
 import com.maxpower.cupcakes.container.ModContainers;
 import com.maxpower.cupcakes.item.ModItems;
-import com.maxpower.cupcakes.tileentity.tileEntityClasses.MixerTile;
+import com.maxpower.cupcakes.tileentity.tileEntityClasses.ShopTile;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -20,23 +20,25 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-public class CupcakeShopContainer extends Container {
+public class ShopContainer extends Container {
 
     private TileEntity tileEntity;
     private PlayerEntity playerEntity;
     private IItemHandler playerInventory;
 
-    public CupcakeShopContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player){
-        super(ModContainers.CUPCAKE_SHOP_CONTAINER.get(), windowId);
-
+    public ShopContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player) {
+        super(ModContainers.SHOP_CONTAINER.get(), windowId);
         this.tileEntity = world.getTileEntity(pos);
         this.playerEntity = player;
         this.playerInventory = new InvWrapper(playerInventory);
 
         if (tileEntity != null) {
             tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
-                addSlot(new SlotItemHandler(h, 0, 38, 20));
-                addSlot(new SlotItemHandler(h, 1, 94, 20));
+                addSlot(new SlotItemHandler(h, 0, 56, 36)); // Cupcakes slot
+                addSlot(new SlotItemHandler(h, 1, 112, 35)); // Money1 slot
+                addSlot(new SlotItemHandler(h, 2, 23, 36));  // Price slot
+                addSlot(new SlotItemHandler(h, 3, 133, 35));  // Money2 slot
+                addSlot(new SlotItemHandler(h, 4, 154, 35));  // Money3 slot
             });
         }
 
@@ -51,7 +53,7 @@ public class CupcakeShopContainer extends Container {
                         tileEntity.getPos()
                 ),
                 playerEntity,
-                ModBlocks.CUPCAKE_SHOP.get()
+                ModBlocks.SHOP.get()
         );
     }
 
@@ -94,7 +96,6 @@ public class CupcakeShopContainer extends Container {
     }
 
     private int addSlotRange(IItemHandler handler, int index, int x, int y, int amount, int dx) {
-
         for (int i=0; i<amount; i++) {
             addSlot(new SlotItemHandler(handler, index, x, y));
             x += dx;
@@ -105,7 +106,6 @@ public class CupcakeShopContainer extends Container {
     }
 
     private int addSlotBox(IItemHandler handler, int index, int x, int y, int horAmount, int dx, int verAmount, int dy) {
-
         for (int j=0; j<verAmount; j++) {
             index = addSlotRange(handler, index, x, y, horAmount, dx);
             y += dy;
@@ -123,7 +123,17 @@ public class CupcakeShopContainer extends Container {
 
     @OnlyIn(Dist.CLIENT)
     public int getProgress() {
-        return ((MixerTile) this.tileEntity).getProgress();
+        return ((ShopTile) this.tileEntity).getProgress();
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public int getPrice() {
+        return ((ShopTile) this.tileEntity).getPrice();
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public void setPrice(int price) {
+        ((ShopTile) this.tileEntity).setPrice(price);
     }
 
 }
